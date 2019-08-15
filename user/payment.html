@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -11,32 +10,32 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
-        
+
     </nav>
     <div class="container">
         <div class="row mx-1">
-        <h2 class= " col-md-5 text-center mx-auto"> User Payment</h2>
-        <form action="signup.php" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-secondary rounded" >
-            <div class="form-group">
-                <label>Card number</label>
-                <input type="text" class="form-control" name="cardno" id="Inputcardno">
+            <h2 class=" col-md-5 text-center mt-2 mx-auto"> User Payment</h2>
+            <div class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded">
+                <form action="signup.php" method="POST">
+                    <div class="form-group">
+                        <label>Card number</label>
+                        <input type="text" class="form-control" name="cardno" id="Inputcardno">
+                    </div>
+                    <div class="form-group">
+                        <label>Name on card</label>
+                        <input type="text" class="form-control" name="name" id="Inputname">
+                    </div>
+                    <div class="form-group">
+                        <label>cvv</label>
+                        <input type="text" class="form-control" name="cvv" id="exampleInputno">
+                    </div>
+                    <input type="submit" name="submit" class="btn btn-block">
+                </form>
             </div>
-            <div class="form-group">
-                <label>Name on card</label>
-                <input type="text" class="form-control" name="name" id="Inputname">
-            </div>
-            <div class="form-group">
-                <label>cvv</label>
-                <input type="text" class="form-control" name="cvv" id="exampleInputno">
-            </div>
-            
-  
-            <input type="submit" name="submit" class="btn btn-secondary">
-        </form>
-        <br>
-    </div>
+            <br>
+        </div>
 
 </body>
 
