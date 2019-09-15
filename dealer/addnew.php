@@ -1,5 +1,12 @@
 <?php include 'connect.php'?>
-<?php
+<?php session_start();
+if (!isset($_SESSION['user_id'])) {
+    echo '<script type="text/javascript">
+                window.location = "login.php"
+                 </script>';
+}
+else{
+    $dealer_id = $_SESSION['user_id'];
     $name = $brand = $code = $category = $gender = $type = $price = $image = $description = $error = "";
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $flag = 0;
@@ -11,6 +18,17 @@
         $type = $_POST['type'];
         $price = $_POST['price'];
         $description = $_POST['description'];
+        $image = $_FILES['image']['name'];
+        $extension = end(explode(".", $image));
+        $newfilename = $code .".".$extension;
+        $target = "../images/".$newfilename;
+        $code_result = mysqli_query($conn, "SELECT code FROM products");
+        while($row = mysqli_fetch_assoc($code_result)){
+            if($row['code'] == $code){
+                $error = "Product code already exist";
+                $flag = 1;
+            }
+        }
         if(empty($_POST['name']) || empty($_POST['brand']) || empty($_POST['code']) || empty($_POST['category']) 
         || empty($_POST['gender']) || empty($_POST['type']) || empty($_POST['price']) || empty($_POST['description'])){
             echo "test";
@@ -18,8 +36,9 @@
             $flag = 1;
         }
          if(!$flag){
-            $sql = "INSERT INTO products (name, brand, code, category, gender, type, price, image, description) 
-            VALUES ('$name', '$brand', '$code', '$category', '$gender', '$type', '$price', '$image', '$description')";
+            move_uploaded_file($_FILES['image']['tmp_name'], $target);
+            $sql = "INSERT INTO products (name, brand, code, category, gender, type, price, image, description, dealer_id) 
+            VALUES ('$name', '$brand', '$code', '$category', '$gender', '$type', '$price', '$newfilename', '$description', '$dealer_id')";
             if (mysqli_query($conn, $sql)) {
                 echo '<script type="text/javascript">
                         window.location = "login.html"
@@ -45,12 +64,13 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
-        
     </nav>
     <div class="container">
         <div class="row mx-1">
         <h2 class= " col-md-5 text-center mt-2 mx-auto">Add New Watch</h2>
-        <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded" >
+        
+        <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded" enctype="multipart/form-data">
+            <span class="error"><?php echo $error; ?></span>
             <div class="form-group">
                 <label>Brand</label>
                 <input type="text" class="form-control" name="brand" id="Inputbrand">
@@ -96,11 +116,11 @@
                 <label>Image</label><br>
                 <input type="file"  name="image" id="image">
             </div>
-            <input type="submit" name="submit" class="btn btn-block">
+            <input type="submit" name="submit" class="btn btn-block btn-secondary">
         </form>
         <br>
     </div>
 
 </body>
-
+<?php } ?>
 </html>
