@@ -1,26 +1,32 @@
 <?php include 'connect.php' ?>
 <?php
-    $firstname = $lastname = $username = $password = $busname = $phone = "";
+    $name = $owner = $email = $phone = $password = $location = $address = $bio = $error = "";
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $flag = 0;
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $username = $_POST['email'];
-        $password = $_POST['password'];
-        $busname = $_POST['bussiness_name'];
-        $phone = $_POST['ph_no'];
-        $select_query = "SELECT * FROM dealer_details";
-    $result = mysqli_query($conn, $select_query);
-    while($row=mysqli_fetch_assoc($result)){
-        if($row['email'] == $username){
-        $flag = 1;
-            echo '<script type="text/javascript">
-                    window.location = "user_duplicate_error.php"
-                    </script>';
+        $name = $_POST['name'];
+        $owner = $_POST['owner'];
+        $email = $_POST['email'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $location = $_POST['location'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+        $bio = $_POST['bio'];
+        $select_query = "SELECT * FROM dealer";
+        $result = mysqli_query($conn, $select_query);
+        while($row=mysqli_fetch_assoc($result)){
+            if($row['email'] == $email){
+            $flag = 1;
+            $error = "User already exists";
+            }
         }
-    }
+        if(empty($_POST['name']) || empty($_POST['owner']) || empty($_POST['email']) || empty($_POST['phone']) || 
+        empty($_POST['password']) ||empty($_POST['location']) ||empty($_POST['address'])|| empty($_POST['bio'])){
+            $error = "Please fill in all the details";
+            $flag == 1;
+        }
     if($flag == 0){
-        $sql = "INSERT INTO dealer_details (first_name, last_name, email_id, password, busname, phone) VALUES ('$firstname', '$lastname', '$username', '$password', 'busname', '$phone')";
+        $sql = "INSERT INTO dealer (name, owner, email, password, location, address, phone, bio) 
+        VALUES ('$name', '$owner', '$email', '$password', 'location', '$address', '$phone', '$bio')";
         if ($conn->query($sql) === TRUE) {
             echo '<script type="text/javascript">
                     window.location = "login.html"
@@ -33,3 +39,61 @@
 }
 
 ?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>
+        Sign up - Dealer
+    </title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Online Watch Store</a>
+    </nav>
+    <div class="container">
+        <h2 class= " col-md-4 text-center mt-2 mx-auto">Dealer Sign-up</h2>
+        <form action="signup.php" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded" >
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="name">
+            </div>
+            <div class="form-group">
+                <label>Owner's name</label>
+                <input type="text" class="form-control" name="owner">
+            </div>
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+                <label >Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="form-group">
+                <label>Bussiness phone</label>
+                <input type="text" class="form-control" name="phone">
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" class="form-control" name="location">
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <input type="textarea" class="form-control" name="address">
+            </div>
+            <div class="form-group">
+                <label>Short bio</label>
+                <input type="textarea" class="form-control" name="bio">
+            </div>
+            <input type="submit" name="submit" class="btn btn-block btn-primary">
+        </form>
+        <br>
+    </div>
+</body>
+
+</html>
