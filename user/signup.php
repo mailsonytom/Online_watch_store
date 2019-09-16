@@ -19,10 +19,10 @@
         }       
     if($flag == 0){
         $sql = "INSERT INTO users (name, email, password, phone, address, gender) 
-        VALUES ('$name', '$email', '$passwrod', '$phone', '$address', '$gender')";
+        VALUES ('$name', '$email', '$password', '$phone', '$address', '$gender')";
         if (mysqli_query($conn, $sql)) {
             echo '<script type="text/javascript">
-                    window.location = "login.html"
+                    window.location = "comment.html"
                     </script>';
         } 
     else {
@@ -36,7 +36,7 @@
 
 <head>
     <title>
-        sign-up list
+    User Sign up
     </title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
