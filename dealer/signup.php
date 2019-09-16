@@ -25,8 +25,8 @@
             $flag == 1;
         }
     if($flag == 0){
-        $sql = "INSERT INTO dealer (name, owner, email, password, location, address, phone, bio) 
-        VALUES ('$name', '$owner', '$email', '$password', 'location', '$address', '$phone', '$bio')";
+        $sql = "INSERT INTO dealer (name, owner, email, password, location, address, phone, bio, approved) 
+        VALUES ('$name', '$owner', '$email', '$password', 'location', '$address', '$phone', '$bio', 0)";
         if ($conn->query($sql) === TRUE) {
             echo '<script type="text/javascript">
                     window.location = "login.html"
@@ -57,7 +57,8 @@
     </nav>
     <div class="container">
         <h2 class= " col-md-4 text-center mt-2 mx-auto">Dealer Sign-up</h2>
-        <form action="signup.php" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded" >
+        <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded" >
+        <span class="error"><?php echo $error; ?></span>
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" name="name">
