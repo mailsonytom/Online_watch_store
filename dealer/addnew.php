@@ -1,6 +1,6 @@
 <?php include 'connect.php'?>
 <?php session_start();
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['dealer'])) {
     echo '<script type="text/javascript">
                 window.location = "login.php"
                  </script>';

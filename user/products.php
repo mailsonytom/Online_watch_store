@@ -1,11 +1,14 @@
 <?php include 'connect.php'?>
 <?php session_start();
-    $dealer_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
     $sql = "SELECT * FROM products";
     $result = mysqli_query($conn, $sql);  
     while($row = mysqli_fetch_assoc($result)){
         $data[] = $row;
     }
+    $cart_sql = "SELECT * FROM purchases WHERE user_id=".$user_id;
+    $result = mysqli_query($conn, $sql);  
+    $cartnumber=mysqli_num_rows($result);
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,7 +30,10 @@
             <h3 class="h3">Purchase your favourite watch</h3>
         </div>
         <div class="col-md-1 offset-3">
+        <button type="button" class="btn btn-warning">
             <img src="../assets/images/cart.png" class="img-fluid"/>
+            <span class="badge badge-dark">9</span>
+        </button>
         </div>
     </div>
     <div class="row">
@@ -41,7 +47,7 @@
                 </div>
                 <div class="product-content">
                     <h3 class="title"><a href="productdetails.php?id=<?php echo $a['id'];?>"><?php echo $a['name'];?></a></h3>
-                    <div class="price">Price: <?php echo $a['image'];?></div>
+                    <div class="price">Price: ₹<?php echo $a['price'];?></div>
                     <button class="btn btn-warning">Add to cart</button>
                 </div>
             </div>

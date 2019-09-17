@@ -1,8 +1,8 @@
 <?php include 'connect.php'?>
 <?php session_start();
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['admin'])) {
     echo '<script type="text/javascript">
-                window.location = "signin.php"
+                window.location = "login.php"
                  </script>';
 }
 else{
