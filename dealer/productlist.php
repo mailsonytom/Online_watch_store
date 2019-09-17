@@ -1,12 +1,12 @@
 <?php include 'connect.php'?>
 <?php session_start();
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['dealer'])) {
     echo '<script type="text/javascript">
                 window.location = "signin.php"
                  </script>';
 }
 else{
-    $dealer_id = $_SESSION['user_id'];
+    $dealer_id = $_SESSION['dealer'];
     $sql = "SELECT * FROM products WHERE dealer_id='$dealer_id'";
     $result = mysqli_query($conn, $sql);  
     while($row = mysqli_fetch_assoc($result)){
