@@ -39,14 +39,8 @@ else{
             move_uploaded_file($_FILES['image']['tmp_name'], $target);
             $sql = "INSERT INTO products (name, brand, code, category, gender, type, price, image, description, dealer_id) 
             VALUES ('$name', '$brand', '$code', '$category', '$gender', '$type', '$price', '$newfilename', '$description', '$dealer_id')";
-            if (mysqli_query($conn, $sql)) {
-                echo '<script type="text/javascript">
-                        window.location = "login.html"
-                        </script>';
-            } 
-            else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-                }
+            mysqli_query($conn, $sql);
+
         }
     }
 ?>

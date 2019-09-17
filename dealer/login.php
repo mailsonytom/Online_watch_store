@@ -11,7 +11,7 @@
             if(password_verify($password, $row['password']) && $row['approved'] == 1){
                 $_SESSION['user_id'] = $row['id'];
                 echo '<script type="text/javascript">
-                window.location = "addnew.html"
+                window.location = "addnew.php"
                  </script>';
             }
             else{

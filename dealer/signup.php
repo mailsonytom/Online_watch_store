@@ -29,7 +29,7 @@
         VALUES ('$name', '$owner', '$email', '$password', 'location', '$address', '$phone', '$bio', 0)";
         if ($conn->query($sql) === TRUE) {
             echo '<script type="text/javascript">
-                    window.location = "login.html"
+                    window.location = "login.php"
                     </script>';
         } 
         else {
