@@ -1,6 +1,9 @@
 <?php include 'connect.php' ?>
 <?php
-	session_start();
+    session_start();
+    if(isset($_SESSION['user_id'])){
+        include 'logout.php';
+    }
     $username = $password = $error = "";
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $username = $_POST['username'];

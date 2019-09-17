@@ -1,27 +1,32 @@
 <?php include 'connect.php' ?>
 <?php
     session_start();
-    $email = $password = $error = "";
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $sql = "SELECT * FROM users WHERE email = '$email'";
-        $result = mysqli_query($conn, $sql);
-        if($row=mysqli_fetch_assoc($result)){
-            if(password_verify($password, $row['password'])){
-                $_SESSION['user_id'] = $row['id'];
-                echo '<script type="text/javascript">
-                window.location = ""
-                 </script>';
+    if(isset($_SESSION['user_id'])){
+        include 'logout.php';
+    }
+    else{
+        $email = $password = $error = "";
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $sql = "SELECT * FROM users WHERE email = '$email'";
+            $result = mysqli_query($conn, $sql);
+            if($row=mysqli_fetch_assoc($result)){
+                if(password_verify($password, $row['password'])){
+                    $_SESSION['user_id'] = $row['id'];
+                    echo '<script type="text/javascript">
+                    window.location = "products.php"
+                    </script>';
+                }
+                else{
+                        $error = "Wrong password";
+                }
             }
             else{
-                    $error = "Wrong password";
+                $error = "Wrong username";
+                }
             }
-        }
-        else{
-            $error = "Wrong username";
-            }
-        }
+    }
 ?>
 
 <!doctype html>

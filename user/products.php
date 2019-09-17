@@ -1,14 +1,21 @@
 <?php include 'connect.php'?>
-<?php session_start();
-    $user_id = $_SESSION['user_id'];
-    $sql = "SELECT * FROM products";
-    $result = mysqli_query($conn, $sql);  
-    while($row = mysqli_fetch_assoc($result)){
-        $data[] = $row;
+<?php 
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        echo '<script type="text/javascript">
+                    window.location = "login.php"
+                     </script>';
     }
-    $cart_sql = "SELECT * FROM purchases WHERE user_id=".$user_id;
-    $result = mysqli_query($conn, $sql);  
-    $cartnumber=mysqli_num_rows($result);
+    else{
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT * FROM products";
+        $result = mysqli_query($conn, $sql);  
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+        $cart_sql = "SELECT * FROM purchases WHERE user_id=".$user_id;
+        $result = mysqli_query($conn, $sql);  
+        $cartnumber=mysqli_num_rows($result);
 ?>
 <!doctype html>
 <html lang="en">
@@ -57,4 +64,5 @@
 </div>
 <hr>
 </body>
+<?php }?>
 </html>
