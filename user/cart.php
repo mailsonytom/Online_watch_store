@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row mt-5 mb-3 top-strip">
             <div class="col-md-8">
-                <h3 class="h3">You have items in your cart</h3>
+                <h3 class="h3">Your online watch store cart</h3>
             </div>
         </div>
         <div class="row">
@@ -52,7 +52,8 @@
                         </div>
                         <div class="col-md-1 offset-4">
                             <span class="badge badge-success">Count: <?php echo $a['count']; ?></span>
-                            <span class="badge badge-danger">Price: ₹<?php echo $a['count']*$a['price']; $total += $a['count']*$a['price']; ?></span>
+                            <span class="badge badge-warning">Price: ₹<?php echo $a['count']*$a['price']; $total += $a['count']*$a['price']; ?></span>
+                            <a href="removefromcart.php?id=<?php echo $a['id'];?>"><span class="mt-4 badge badge-danger">Remove from cart</span></a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +62,10 @@
         <div class="row mt-5 mb-3 top-strip">
             <div class="col-md-8">
                 <h3 class="h3">Total amount: ₹<?php echo $total;?></h3>
-                <button class="btn btn-primary">Checkout</button>
+                <?php
+                if($total>0){?>
+                    <button class="btn btn-primary">Checkout</button>
+                <?php }?>
             </div>
         </div>
     </div>
