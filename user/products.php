@@ -13,9 +13,12 @@
         while($row = mysqli_fetch_assoc($result)){
             $data[] = $row;
         }
-        $cart_sql = "SELECT * FROM purchases WHERE user_id=".$user_id;
-        $result = mysqli_query($conn, $sql);  
-        $cartnumber=mysqli_num_rows($result);
+        $cart_sql = "SELECT * FROM cart WHERE user_id=".$user_id;
+        $result = mysqli_query($conn, $cart_sql);  
+        $cartnumber = 0;
+        while($row = mysqli_fetch_assoc($result)){
+            $cartnumber = $cartnumber + $row['count'];
+        }
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,7 +42,7 @@
         <div class="col-md-1 offset-3">
         <button type="button" class="btn btn-warning">
             <img src="../assets/images/cart.png" class="img-fluid"/>
-            <span class="badge badge-dark">9</span>
+            <span class="badge badge-dark"><?php echo $cartnumber; ?></span>
         </button>
         </div>
     </div>
@@ -55,7 +58,7 @@
                 <div class="product-content">
                     <h3 class="title"><a href="productdetails.php?id=<?php echo $a['id'];?>"><?php echo $a['name'];?></a></h3>
                     <div class="price">Price: ₹<?php echo $a['price'];?></div>
-                    <button class="btn btn-warning">Add to cart</button>
+                    <a href="updatecart.php?id=<?php echo $a['id'];?>"><button class="btn btn-warning">Add to cart</button></a>
                 </div>
             </div>
         </div>
