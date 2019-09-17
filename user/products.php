@@ -8,6 +8,7 @@
     }
     else{
         $user_id = $_SESSION['user_id'];
+        $name = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM users WHERE id='$user_id'"))['name'];
         $sql = "SELECT * FROM products";
         $result = mysqli_query($conn, $sql);  
         while($row = mysqli_fetch_assoc($result)){
@@ -36,14 +37,19 @@
     <div class="container">
     
     <div class="row mt-5 mb-3 top-strip">
+         <div class="col-md-8">
+            <h6 class="h6 text-danger">Welcome <?php echo $name;?></h6>
+        </div>
         <div class="col-md-8">
             <h3 class="h3">Purchase your favourite watch</h3>
         </div>
         <div class="col-md-1 offset-3">
+        <a href="cart.php">
         <button type="button" class="btn btn-warning">
             <img src="../assets/images/cart.png" class="img-fluid"/>
             <span class="badge badge-dark"><?php echo $cartnumber; ?></span>
         </button>
+        </a>
         </div>
     </div>
     <div class="row">
