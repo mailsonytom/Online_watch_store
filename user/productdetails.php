@@ -7,18 +7,11 @@
                      </script>';
     }
     else{
-        $user_id = $_SESSION['user_id'];
-        $name = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM users WHERE id='$user_id'"))['name'];
-        $sql = "SELECT * FROM products";
-        $result = mysqli_query($conn, $sql);  
-        while($row = mysqli_fetch_assoc($result)){
-            $data[] = $row;
-        }
-        $cart_sql = "SELECT * FROM cart WHERE user_id=".$user_id;
-        $result = mysqli_query($conn, $cart_sql);  
-        $cartnumber = 0;
-        while($row = mysqli_fetch_assoc($result)){
-            $cartnumber = $cartnumber + $row['count'];
+        if(isset($_GET['id'])){
+            $user_id = $_SESSION['user_id'];
+            $sql = "SELECT * FROM products WHERE id = products.id";
+            $result = mysqli_query($conn, $sql);  
+            $row = mysqli_fetch_assoc($result);
         }
 ?>
 <!doctype html>
@@ -53,22 +46,13 @@
         </div>
     </div>
     <div class="row">
-        <?php foreach($data as $a){?>
-        <div class="col-md-3 col-sm-6">
-            <a href="productdetails.php?id=<?php echo $a['id'];?>">
-            <div class="product-grid6">
-                <div class="product-image6 mt-5">
-                        <img class="pic-1 img-fluid" src="../images/<?php echo $a['image'];?>">
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><?php echo $a['name'];?></a></h3>
-                    <div class="price">Price: ₹<?php echo $a['price'];?></div>
-                    <a href="updatecart.php?id=<?php echo $a['id'];?>"><button class="btn btn-warning">Add to cart</button>
-                </div>
-            </div>
-            </a>
+        <div class="col-md-4">
+            <img src="../images/<?php echo $row['image']?>" alt="" class="img-fluid"/>
         </div>
-        <?php } ?>
+        <div class="col-md-8">
+            <h1>Watch name: <?php echo $row['name']?></h1>
+            <span>Brand: <?php echo $row['brand']?></span>
+        </div>
     </div>
 </div>
 <hr>
