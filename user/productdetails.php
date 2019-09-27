@@ -7,12 +7,36 @@
                      </script>';
     }
     else{
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $user_id = $_SESSION['user_id'];
+            $product_id = $_POST['product_id']; 
+            while($commentrow = mysqli_fetch_assoc($commentresult))
+            {
+                $data[] = $commentrow;
+            }
+            $flag = 0;
+            if(empty($_POST['comment'])){
+                $flag = 1;
+                $error = "Comment is necesary to submit";
+            }
+            if($flag == 0){
+                $comment = $_POST['comment'];
+                $insertsql = "INSERT INTO comments (user_id, product_id, comment) VALUES ('$user_id', '$product_id', '$comment')";
+                mysqli_query($conn, $insertsql);
+            }
+        }
         if(isset($_GET['id'])){
             $user_id = $_SESSION['user_id'];
-            $id = $_GET['id'];
-            $sql = "SELECT * FROM products WHERE id = '$id'";
+            $product_id = $_GET['id'];
+            $sql = "SELECT * FROM products WHERE id = '$product_id'";
             $result = mysqli_query($conn, $sql);  
             $row = mysqli_fetch_assoc($result);
+            $commentsql = "SELECT * FROM comments WHERE product_id = '$product_id' AND user_id='$user_id'";
+            $commentresult = mysqli_query($conn, $commentsql);  
+            while($commentrow = mysqli_fetch_assoc($commentresult))
+            {
+                $data[] = $commentrow;
+            }
         }
 ?>
 <!doctype html>
@@ -57,6 +81,23 @@
             <span class="badge badge-secondary"><?php echo $row['gender']; ?></span>
             <span class="badge badge-primary"><?php echo $row['type']; ?></span>
             <p><?php echo $row['description']; ?></p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label>Write a comment</label>
+                    <textarea name="comment" class="form-control" placeholder="Write a comment"></textarea>
+                    <input type="text" name="product_id" hidden value="<?php echo $product_id; ?>" />
+                    <input type="Submit" value="Submit" class="btn  btn-secondary mt-3">
+                </div>
+            </form>
+            <hr>
+            <?php foreach ($data as $a) { ?>
+                <p class="card-text"><?php echo $a['comment'] ?></p>
+            <?php } ?>
         </div>
     </div>
 </div>
