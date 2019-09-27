@@ -9,7 +9,8 @@
     else{
         if(isset($_GET['id'])){
             $user_id = $_SESSION['user_id'];
-            $sql = "SELECT * FROM products WHERE id = products.id";
+            $id = $_GET['id'];
+            $sql = "SELECT * FROM products WHERE id = '$id'";
             $result = mysqli_query($conn, $sql);  
             $row = mysqli_fetch_assoc($result);
         }
@@ -52,6 +53,10 @@
         <div class="col-md-8">
             <h1>Watch name: <?php echo $row['name']?></h1>
             <span>Brand: <?php echo $row['brand']?></span>
+            <br>
+            <span class="badge badge-secondary"><?php echo $row['gender']; ?></span>
+            <span class="badge badge-primary"><?php echo $row['type']; ?></span>
+            <p><?php echo $row['description']; ?></p>
         </div>
     </div>
 </div>
