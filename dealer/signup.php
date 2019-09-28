@@ -1,40 +1,41 @@
 <?php include 'connect.php' ?>
 <?php
-    $name = $owner = $email = $phone = $password = $location = $address = $bio = $error = "";
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $flag = 0;
-        $name = $_POST['name'];
-        $owner = $_POST['owner'];
-        $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $location = $_POST['location'];
-        $address = $_POST['address'];
-        $phone = $_POST['phone'];
-        $bio = $_POST['bio'];
-        $select_query = "SELECT * FROM dealer";
-        $result = mysqli_query($conn, $select_query);
-        while($row=mysqli_fetch_assoc($result)){
-            if($row['email'] == $email){
+$name = $owner = $email = $phone = $password = $location = $address = $bio = $error = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $flag = 0;
+    $name = $_POST['name'];
+    $owner = $_POST['owner'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $location = $_POST['location'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $bio = $_POST['bio'];
+    $select_query = "SELECT * FROM dealer";
+    $result = mysqli_query($conn, $select_query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['email'] == $email) {
             $flag = 1;
             $error = "User already exists";
-            }
         }
-        if(empty($_POST['name']) || empty($_POST['owner']) || empty($_POST['email']) || empty($_POST['phone']) || 
-        empty($_POST['password']) ||empty($_POST['location']) ||empty($_POST['address'])|| empty($_POST['bio'])){
-            $error = "Please fill in all the details";
-            $flag == 1;
-        }
-    if($flag == 0){
+    }
+    if (
+        empty($_POST['name']) || empty($_POST['owner']) || empty($_POST['email']) || empty($_POST['phone']) ||
+        empty($_POST['password']) || empty($_POST['location']) || empty($_POST['address']) || empty($_POST['bio'])
+    ) {
+        $error = "Please fill in all the details";
+        $flag == 1;
+    }
+    if ($flag == 0) {
         $sql = "INSERT INTO dealer (name, owner, email, password, location, address, phone, bio, approved) 
         VALUES ('$name', '$owner', '$email', '$password', 'location', '$address', '$phone', '$bio', 0)";
         if ($conn->query($sql) === TRUE) {
             echo '<script type="text/javascript">
                     window.location = "login.php"
                     </script>';
-        } 
-        else {
+        } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
-            }
+        }
     }
 }
 
@@ -56,9 +57,9 @@
         <a class="navbar-brand" href="#">Online Watch Store</a>
     </nav>
     <div class="container">
-        <h2 class= " col-md-4 text-center mt-2 mx-auto">Dealer Sign-up</h2>
-        <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded" >
-        <span class="error"><?php echo $error; ?></span>
+        <h2 class=" col-md-4 text-center mt-2 mx-auto">Dealer Sign-up</h2>
+        <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded">
+            <span class="error"><?php echo $error; ?></span>
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" name="name">
@@ -72,7 +73,7 @@
                 <input type="email" class="form-control" name="email">
             </div>
             <div class="form-group">
-                <label >Password</label>
+                <label>Password</label>
                 <input type="password" class="form-control" name="password">
             </div>
             <div class="form-group">

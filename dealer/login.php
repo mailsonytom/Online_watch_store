@@ -1,30 +1,28 @@
 <?php include 'connect.php' ?>
 <?php
-    session_start();
-    if(isset($_SESSION['user_id'])){
-        include 'logout.php';
-    }
-    $username = $password = $error = "";
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $sql = "SELECT * FROM dealer WHERE email = '$email'";
-        $result = mysqli_query($conn, $sql);
-        if($row=mysqli_fetch_assoc($result)){
-            if(password_verify($password, $row['password']) && $row['approved'] == 1){
-                $_SESSION['dealer'] = $row['id'];
-                echo '<script type="text/javascript">
+session_start();
+if (isset($_SESSION['user_id'])) {
+    include 'logout.php';
+}
+$username = $password = $error = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $sql = "SELECT * FROM dealer WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+    if ($row = mysqli_fetch_assoc($result)) {
+        if (password_verify($password, $row['password']) && $row['approved'] == 1) {
+            $_SESSION['dealer'] = $row['id'];
+            echo '<script type="text/javascript">
                 window.location = "addnew.php"
                  </script>';
-            }
-            else{
-                    $error = "Wrong password or you're not approved.";  
-            }
+        } else {
+            $error = "Wrong password or you're not approved.";
         }
-        else{
-                $error = "Wrong username.";
-            }
-        }
+    } else {
+        $error = "Wrong username.";
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,7 +38,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
-        
+
     </nav>
     <div class="container">
         <h2 class=" col-md-4 mx-auto mt-2 text-center">Sign-in as dealer</h2>
@@ -56,5 +54,6 @@
             <input type="submit" value="Submit" class="btn btn-block btn-primary">
         </form>
     </div>
-    </body>
+</body>
+
 </html>
