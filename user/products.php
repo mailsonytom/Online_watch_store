@@ -24,15 +24,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>
-    User Sign up
-    </title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
+        <a href="logout.php" class="ml-auto mr-3"><button class="btn btn-outline-info">Logout</button></a>
     </nav>
     <div class="container">
     

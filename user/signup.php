@@ -22,7 +22,7 @@
         VALUES ('$name', '$email', '$password', '$phone', '$address', '$gender')";
         if (mysqli_query($conn, $sql)) {
             echo '<script type="text/javascript">
-                    window.location = "comment.html"
+                    window.location = "login.php"
                     </script>';
         } 
     else {

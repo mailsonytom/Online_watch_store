@@ -29,6 +29,9 @@
                     mysqli_query($conn, $insertsql);
                 }
                 mysqli_query($conn, "DELETE FROM cart WHERE user_id='$user_id'");
+                echo '<script type="text/javascript">
+                    window.location = "products.php"
+                    </script>';
             }
         }
         $user_id = $_SESSION['user_id'];

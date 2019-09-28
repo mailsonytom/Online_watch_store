@@ -64,7 +64,7 @@
                 <h3 class="h3">Total amount: ₹<?php echo $total;?></h3>
                 <?php
                 if($total>0){?>
-                    <button class="btn btn-primary">Checkout</button>
+                    <a href="payment.php"><button class="btn btn-primary">Checkout</button></a>
                 <?php }?>
             </div>
         </div>
