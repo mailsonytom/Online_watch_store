@@ -35,9 +35,7 @@
 <html lang="en">
 
 <head>
-    <title>
-    User Sign up
-    </title>
+    <title>User Sign up</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 </head>
@@ -45,12 +43,15 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
-
+        <a href="login.php" class="ml-auto"><button class="btn btn-outline-info">Login</button></a>
     </nav>
-    <div class="container">
-        <div class="row mx-1">
-            <h2 class=" col-md-5 text-center mt-2 mx-auto"> User Sign up</h2>
-            <div class="col-md-8 mx-auto mt-5 mb-3 px-2 py-2 border border-dark rounded">
+    <div class="container-fluid p-0">
+        <div class="row mx-1 p-0">
+            <div class="left-banner col-md-6 p-0">
+                
+            </div>
+            <div class="col-md-6 mx-auto mt-5 px-2 py-2">
+                <h4>User registration</h4>
                 <form action="" method="POST">
                     <span class="error"><?php echo $error; ?></span>
                     <div class="form-group">
@@ -80,7 +81,7 @@
                         <label>Address</label>
                         <input type="text" class="form-control" name="address" id="address">
                     </div>
-                    <input type="submit" name="submit" class="btn btn-block btn-secondary">
+                    <input type="submit" name="submit" value="Sign up" class="btn btn-secondary">
                 </form>
             </div>
             <br>

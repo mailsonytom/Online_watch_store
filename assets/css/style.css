@@ -3,9 +3,14 @@
     font-size: .8em;
 }
 
+.product-grid6{
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
 .product-grid6,
 .product-grid6 .product-image6 {
     overflow: hidden;
+    
 }
 
 .product-grid6 {
@@ -70,4 +75,16 @@
     border-radius: 50%;
     color:white;
     border:1px solid blue;
+}
+
+.banner{
+    height: 20em;
+    background-image: url("../images/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.left-banner{
+    background-image: url("../images/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
