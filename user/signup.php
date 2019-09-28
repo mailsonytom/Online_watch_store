@@ -1,32 +1,31 @@
 <?php include 'connect.php' ?>
 <?php
-    $name = $email = $password = $address = $phone = $gender = $error = "";
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $flag = 0;
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $gender = $_POST['gender'];
-        $select_query = "SELECT email FROM users";
-        $result = mysqli_query($conn, $select_query);
-        while($row=mysqli_fetch_assoc($result)){
-            if($row['email'] == $email){
+$name = $email = $password = $address = $phone = $gender = $error = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $flag = 0;
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $gender = $_POST['gender'];
+    $select_query = "SELECT email FROM users";
+    $result = mysqli_query($conn, $select_query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['email'] == $email) {
             $error = "Email already exist";
             $flag = 1;
-            }
-        }       
-    if($flag == 0){
+        }
+    }
+    if ($flag == 0) {
         $sql = "INSERT INTO users (name, email, password, phone, address, gender) 
         VALUES ('$name', '$email', '$password', '$phone', '$address', '$gender')";
         if (mysqli_query($conn, $sql)) {
             echo '<script type="text/javascript">
                     window.location = "login.php"
                     </script>';
-        } 
-    else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
 }
@@ -48,7 +47,7 @@
     <div class="container-fluid p-0">
         <div class="row mx-1 p-0">
             <div class="left-banner col-md-6 p-0">
-                
+
             </div>
             <div class="col-md-6 mx-auto mt-5 px-2 py-2">
                 <h4>User registration</h4>
@@ -87,4 +86,5 @@
             <br>
         </div>
 </body>
+
 </html>
