@@ -61,7 +61,6 @@ if (!isset($_SESSION['dealer'])) {
                                 <span class="badge badge-success"><?php echo $a['category']; ?></span>
                                 <span class="badge badge-danger"><?php echo $a['gender']; ?></span>
                                 <span class="badge badge-warning"><?php echo $a['type']; ?></span>
-                                <p class="mb-0">Price in INR: ₹<?php echo $a['price']; ?></p>
                             </div>
                             <div class="col-md-1 offset-4">
                                 <span class="badge badge-success">Count: <?php echo $a['count']; ?></span>

@@ -49,7 +49,7 @@ if (!isset($_SESSION['dealer'])) {
                 </div>
 
                 <div class="alert alert-info col-md-6">
-                    <h4 class="alert-heading">List of orders</h4>
+                    <h4 class="alert-heading">List of shipped orders</h4>
                     <p>You can see the list of orders you had shipped</p>
                     <a href="shipped.php" class="btn btn-success">Click here to view</a>
                 </div>
