@@ -15,7 +15,6 @@ if (!isset($_SESSION['user_id'])) {
     $start_from = ($page - 1) * $limit;
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT * FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE user_id='$user_id' LIMIT $start_from, $limit";
-    echo $sql;
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
