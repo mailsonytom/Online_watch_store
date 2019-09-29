@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $row['password']) && $row['approved'] == 1) {
             $_SESSION['dealer'] = $row['id'];
             echo '<script type="text/javascript">
-                window.location = "addnew.php"
+                window.location = "dashboard.php"
                  </script>';
         } else {
             $error = "Wrong password or you're not approved.";

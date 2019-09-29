@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])) {
         if ($flag == 0) {
             $datetoday = date("Y/m/d");
             $user_id = $_SESSION['user_id'];
-            $sql = "SELECT price, product_id, count FROM products INNER JOIN cart on cart.product_id = products.id WHERE user_id='$user_id'";
+            $sql = "SELECT price, product_id, cart.count FROM products INNER JOIN cart on cart.product_id = products.id WHERE user_id='$user_id'";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_assoc($result)) {
                 $data[] = $row;
@@ -26,6 +26,10 @@ if (!isset($_SESSION['user_id'])) {
                     $a['product_id'] . "," . $user_id . "," . $a['count'] . "," . $datetoday . ", 0," . $a['price']
                     . ")";
                 mysqli_query($conn, $insertsql);
+                $id = $a['product_id'];
+                $currentcount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count FROM products WHERE id='$id'"))['count'];
+                $newcount = $currentcount - $a['count'];
+                mysqli_query($conn, "UPDATE products SET count='$newcount' WHERE id='$id'");
             }
             mysqli_query($conn, "DELETE FROM cart WHERE user_id='$user_id'");
             echo '<script type="text/javascript">

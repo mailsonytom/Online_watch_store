@@ -6,9 +6,16 @@ if (!isset($_SESSION['user_id'])) {
                     window.location = "login.php"
                      </script>';
 } else {
+    $limit = 10;
+    if (isset($_GET["page"])) {
+        $page  = $_GET["page"];
+    } else {
+        $page = 1;
+    };
+    $start_from = ($page - 1) * $limit;
     $user_id = $_SESSION['user_id'];
     $name = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM users WHERE id='$user_id'"))['name'];
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM products LIMIT $start_from, $limit";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
@@ -69,11 +76,25 @@ if (!isset($_SESSION['user_id'])) {
                         <a href="updatecart.php?id=<?php echo $a['id']; ?>"><button class="btn btn-warning">Add to cart</button>
                     </div>
             </div>
+
             </a>
         </div>
     <?php } ?>
     </div>
+    <?php
+        $sql = "SELECT COUNT(id) FROM products";
+        $rs_result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_row($rs_result);
+        $total_records = $row[0];
+        $total_pages = ceil($total_records / $limit);
+        $pagLink = "<div class='pagination mt-3'>";
+        for ($i = 1; $i <= $total_pages; $i++) {
+            $pagLink .= "<li class='page-item'><a class='page-link' href='products.php?page=" . $i . "'>" . $i . "</a></li>";
+        };
+        echo $pagLink . "</div>";
+        ?>
     </div>
+
     <hr>
     </body>
 <?php } ?>
