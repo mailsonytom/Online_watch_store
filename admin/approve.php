@@ -1,5 +1,6 @@
 <?php include 'connect.php' ?>
 <?php
+session_start();
 if (!isset($_SESSION['admin'])) {
     echo '<script type="text/javascript">
                 window.location = "login.php"
@@ -11,7 +12,7 @@ else{
         $sql = "UPDATE dealer SET approved=1 WHERE id=".$id;
         if(mysqli_query($conn, $sql)){
             echo '<script type="text/javascript">
-                    window.location = "unapproved.php"
+                    window.location = "approved.php"
                     </script>';
         }
     }

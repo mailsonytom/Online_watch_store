@@ -5,7 +5,7 @@ if (!isset($_SESSION['dealer'])) {
                 window.location = "login.php"
                  </script>';
 } else {
-    $dealer_id = $_SESSION['user_id'];
+    $dealer_id = $_SESSION['dealer'];
     $name = $brand = $code = $category = $gender = $type = $price = $image = $description = $error = $count = "";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $flag = 0;

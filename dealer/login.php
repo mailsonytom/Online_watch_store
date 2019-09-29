@@ -1,7 +1,7 @@
 <?php include 'connect.php' ?>
 <?php
 session_start();
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['dealer'])) {
     include 'logout.php';
 }
 $username = $password = $error = "";
