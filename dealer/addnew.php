@@ -41,6 +41,9 @@ if (!isset($_SESSION['dealer'])) {
             $sql = "INSERT INTO products (name, brand, code, category, gender, type, price, count, image, description, dealer_id) 
             VALUES ('$name', '$brand', '$code', '$category', '$gender', '$type', '$price', '$count', '$newfilename', '$description', '$dealer_id')";
             mysqli_query($conn, $sql);
+            echo '<script type="text/javascript">
+                window.location = "productlist.php"
+                 </script>';
         }
     }
     ?>
@@ -116,7 +119,7 @@ if (!isset($_SESSION['dealer'])) {
                         <label>Image</label><br>
                         <input type="file" name="image" id="image">
                     </div>
-                    <input type="submit" name="submit" class="btn btn-block btn-secondary">
+                    <input type="submit" name="submit" value="Add watch" class="btn btn-block btn-secondary">
                 </form>
                 <br>
             </div>

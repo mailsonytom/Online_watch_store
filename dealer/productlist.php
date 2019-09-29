@@ -5,7 +5,7 @@ if (!isset($_SESSION['dealer'])) {
                 window.location = "signin.php"
                  </script>';
 } else {
-    $limit = 5;
+    $limit = 3;
     if (isset($_GET["page"])) {
         $page  = $_GET["page"];
     } else {
