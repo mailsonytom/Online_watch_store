@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <h2 class=" col-md-4 mx-auto ">Sign-in as admin</h2>
         <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded">
+            <span class="error"><?php echo $error; ?></span>
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control">

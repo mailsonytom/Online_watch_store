@@ -44,7 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
     <div class="container">
         <h2 class=" col-md-4 mx-auto mt-2 text-center">Sign-in as dealer</h2>
-        <form action="login.php" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded">
+        <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded">
+            <span class="error"><?php echo $error; ?></span>
             <div class="form-group">
                 <label>Email address</label>
                 <input type="email" name="email" class="form-control">

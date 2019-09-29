@@ -24,8 +24,7 @@ if (!isset($_SESSION['dealer'])) {
         $sql = "SELECT * FROM products WHERE id = '$product_id'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
-    }
-    else{
+    } else {
         echo '<script type="text/javascript">
                     window.location = "productlist.php"
                     </script>';
@@ -63,6 +62,7 @@ if (!isset($_SESSION['dealer'])) {
             <div class="row">
                 <div class="col-md-12">
                     <form action="" method="POST">
+                        <span class="error"><?php echo $error; ?></span>
                         <div class="form-group">
                             <label>Update the number of pieces available</label>
                             <input type="text" class="form-control" name="count" value="<?php echo $row['count']; ?>" />
