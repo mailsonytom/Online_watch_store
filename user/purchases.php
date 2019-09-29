@@ -6,12 +6,20 @@ if (!isset($_SESSION['user_id'])) {
                     window.location = "login.php"
                      </script>';
 } else {
+    $limit = 5;
+    if (isset($_GET["page"])) {
+        $page  = $_GET["page"];
+    } else {
+        $page = 1;
+    };
+    $start_from = ($page - 1) * $limit;
     $user_id = $_SESSION['user_id'];
-    $sql = "SELECT * FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE user_id='$user_id'";
+    $sql = "SELECT * FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE user_id='$user_id' LIMIT $start_from, $limit";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
     }
+
     ?>
     <!doctype html>
     <html lang="en">
@@ -31,7 +39,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="container">
             <div class="row mt-5 mb-3 top-strip">
                 <div class="col-md-8">
-                    <h3 class="h3">Your online watch store cart</h3>
+                    <h3 class="h3">Your past purchases</h3>
                 </div>
             </div>
             <div class="row">
@@ -55,6 +63,18 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 <?php } ?>
             </div>
+            <?php
+                $sql = "SELECT COUNT(purchases.id) FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE user_id='$user_id'";
+                $rs_result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_row($rs_result);
+                $total_records = $row[0];
+                $total_pages = ceil($total_records / $limit);
+                $pagLink = "<div class='pagination'>";
+                for ($i = 1; $i <= $total_pages; $i++) {
+                    $pagLink .= "<li class='page-item'><a class='page-link' href='purchases.php?page=" . $i . "'>" . $i . "</a></li>";
+                };
+                echo $pagLink . "</div>";
+                ?>
         </div>
         <hr>
     </body>
