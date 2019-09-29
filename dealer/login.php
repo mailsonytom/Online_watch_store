@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <title>
-        Sign in
+        Dealer sign in
     </title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
@@ -38,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
-
+        <a href="signup.php" class="ml-auto mr-3"><button class="btn btn-outline-info">Sign up</button></a>
+        <a href="../admin/" class="mr-3"><button class="btn btn-outline-primary">Login as admin</button></a>
     </nav>
     <div class="container">
         <h2 class=" col-md-4 mx-auto mt-2 text-center">Sign-in as dealer</h2>

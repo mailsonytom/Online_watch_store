@@ -65,7 +65,7 @@ if (!isset($_SESSION['user_id'])) {
                 <?php foreach ($data as $a) { ?>
                     <div class="col-md-3 col-sm-6">
                         <a href="productdetails.php?id=<?php echo $a['id']; ?>">
-                            <div class="product-grid6">
+                            <div class="product-grid6 mt-3">
                                 <div class="product-image6 mt-5">
                                     <img class="pic-1 img-fluid" src="../images/<?php echo $a['image']; ?>">
                                 </div>

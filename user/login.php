@@ -39,7 +39,7 @@ if (isset($_SESSION['user_id'])) {
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
         <a href="../dealer/" class="ml-auto mr-3"><button class="btn btn-outline-primary">I'm a dealer</button></a>
-        <a href="cart.php" class="mr-3"><button class="btn btn-outline-primary">Login as admin</button></a>
+        <a href="../admin/" class="mr-3"><button class="btn btn-outline-primary">Login as admin</button></a>
         <a href="signup.php" class="mr-3"><button class="btn btn-outline-info">Sign up</button></a>
     </nav>
     <div class="container">
