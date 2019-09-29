@@ -7,8 +7,8 @@ if (!isset($_SESSION['dealer'])) {
                      </script>';
 } else {
     $dealer_id = $_SESSION['dealer'];
-    $sql = "SELECT name, brand, code, category, gender, type, purchases.price, image, description, dealer_id, purchases.id, count, shipped 
-        FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE dealer_id='$dealer_id' AND shipped=0";
+    $sql = "SELECT name, brand, code, category, gender, dealer_id, type, purchases.price, image, description, dealer_id, purchases.id, purchases.count, shipped 
+    FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE dealer_id='$dealer_id' AND shipped=0";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
@@ -36,7 +36,7 @@ if (!isset($_SESSION['dealer'])) {
         <div class="container">
             <div class="row mt-5 mb-3 top-strip">
                 <div class="col-md-8">
-                    <h3 class="h3">Your online watch store cart</h3>
+                    <h3 class="h3">Pending orders for shipping</h3>
                 </div>
             </div>
             <div class="row">
