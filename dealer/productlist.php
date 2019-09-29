@@ -40,8 +40,10 @@ if (!isset($_SESSION['dealer'])) {
                             <span class="badge badge-success"><?php echo $a['category']; ?></span>
                             <span class="badge badge-danger"><?php echo $a['gender']; ?></span>
                             <span class="badge badge-warning"><?php echo $a['type']; ?></span>
+                            <span class="badge badge-info"><?php echo $a['count']; ?> pieces remaining</span>
                             <hr>
                             <p class="mb-0">Price in INR: <?php echo $a['price']; ?></p>
+                            <a href="updatecount.php?id=<?php echo $a['id']; ?>"><button class="btn btn-primary mt-2">Update inventory</button></a>
                         </div>
                     <?php } ?>
                 </div>
