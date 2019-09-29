@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Short bio</label>
                 <input type="textarea" class="form-control" name="bio">
             </div>
-            <input type="submit" name="submit" class="btn btn-block btn-primary">
+            <input type="submit" name="submit" value="Sign up" class="btn btn-block btn-primary">
         </form>
         <br>
     </div>

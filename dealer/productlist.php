@@ -5,8 +5,15 @@ if (!isset($_SESSION['dealer'])) {
                 window.location = "signin.php"
                  </script>';
 } else {
+    $limit = 5;
+    if (isset($_GET["page"])) {
+        $page  = $_GET["page"];
+    } else {
+        $page = 1;
+    };
+    $start_from = ($page - 1) * $limit;
     $dealer_id = $_SESSION['dealer'];
-    $sql = "SELECT * FROM products WHERE dealer_id='$dealer_id'";
+    $sql = "SELECT * FROM products WHERE dealer_id='$dealer_id' LIMIT $start_from, $limit";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
@@ -17,7 +24,7 @@ if (!isset($_SESSION['dealer'])) {
 
     <head>
         <title>
-            Add new watch
+            Online Watch Store | Products 
         </title>
         <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
@@ -50,6 +57,18 @@ if (!isset($_SESSION['dealer'])) {
                         </div>
                     <?php } ?>
                 </div>
+                <?php
+                    $sql = "SELECT COUNT(id) FROM products WHERE dealer_id='$dealer_id'";
+                    $rs_result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_row($rs_result);
+                    $total_records = $row[0];
+                    $total_pages = ceil($total_records / $limit);
+                    $pagLink = "<div class='pagination mt-3'>";
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        $pagLink .= "<li class='page-item'><a class='page-link' href='productlist.php?page=" . $i . "'>" . $i . "</a></li>";
+                    };
+                    echo $pagLink . "</div>";
+                    ?>
             </div>
 
     </body>

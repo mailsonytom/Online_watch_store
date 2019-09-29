@@ -5,9 +5,16 @@ if (!isset($_SESSION['dealer'])) {
                 window.location = "signin.php"
                  </script>';
 } else {
+    $limit = 4;
+    if (isset($_GET["page"])) {
+        $page  = $_GET["page"];
+    } else {
+        $page = 1;
+    };
+    $start_from = ($page - 1) * $limit;
     $dealer_id = $_SESSION['dealer'];
     $sql = "SELECT product_id, shipped, purchases.price, purchases.count, name, brand, code, category, gender, type, dealer_id 
-    FROM purchases INNER JOIN products ON purchases.product_id = products.id WHERE dealer_id='$dealer_id' AND shipped=1";
+    FROM purchases INNER JOIN products ON purchases.product_id = products.id WHERE dealer_id='$dealer_id' AND shipped=1 LIMIT $start_from, $limit";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
@@ -34,7 +41,7 @@ if (!isset($_SESSION['dealer'])) {
         </nav>
         <div class="container">
             <div class="row">
-            <h2 class="col-md-12 mt-2">Shipped products list</h2>
+                <h2 class="col-md-12 mt-2">Shipped products list</h2>
                 <?php $total = 0;
                     foreach ($data as $a) { ?>
                     <div class="alert alert-success col-md-12" role="alert">
@@ -50,14 +57,26 @@ if (!isset($_SESSION['dealer'])) {
                             </div>
                             <div class="col-md-1 offset-4">
                                 <span class="badge badge-warning">Total order value: ₹<?php echo $a['count'] * $a['price'];
-                                                                                    $total += $a['count'] * $a['price']; ?></span>
+                                                                                                $total += $a['count'] * $a['price']; ?></span>
                                 <a href="ship.php?id=<?php echo $a['id']; ?>"><span class="mt-4 badge badge-danger">Ship</span></a>
                             </div>
                         </div>
                     </div>
                 <?php } ?>
             </div>
-        <div>
+            <?php
+                $sql = "SELECT COUNT(purchases.id) FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE dealer_id='$dealer_id' AND shipped=1";
+                $rs_result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_row($rs_result);
+                $total_records = $row[0];
+                $total_pages = ceil($total_records / $limit);
+                $pagLink = "<div class='pagination mt-3'>";
+                for ($i = 1; $i <= $total_pages; $i++) {
+                    $pagLink .= "<li class='page-item'><a class='page-link' href='shipped.php?page=" . $i . "'>" . $i . "</a></li>";
+                };
+                echo $pagLink . "</div>";
+                ?>
+            <div>
     </body>
 <?php } ?>
 

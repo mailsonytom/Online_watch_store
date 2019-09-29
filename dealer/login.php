@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
         <a href="signup.php" class="ml-auto mr-3"><button class="btn btn-outline-info">Sign up</button></a>
+        <a href="../user/" class="mr-3"><button class="btn btn-outline-primary">I'm a user</button></a>
         <a href="../admin/" class="mr-3"><button class="btn btn-outline-primary">Login as admin</button></a>
     </nav>
     <div class="container">
@@ -52,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Password</label>
                 <input type="password" name="password" class="form-control">
             </div>
-            <input type="submit" value="Submit" class="btn btn-block btn-primary">
+            <input type="submit" value="Sign in" class="btn btn-primary">
         </form>
     </div>
 </body>
