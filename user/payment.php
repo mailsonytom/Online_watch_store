@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
                 $data[] = $row;
             }
             foreach ($data as $a) {
-                $insertsql = "INSERT INTO purchases (product_id user_id, count, date, shipped, price) VALUES(" .
+                $insertsql = "INSERT INTO purchases (product_id, user_id, count, date, shipped, price) VALUES(" .
                     $a['product_id'] . "," . $user_id . "," . $a['count'] . "," . $datetoday . ", 0," . $a['price']
                     . ")";
                 mysqli_query($conn, $insertsql);
