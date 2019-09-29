@@ -58,7 +58,9 @@ if (!isset($_SESSION['dealer'])) {
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Online Watch Store</a>
-            
+            <a href="productlist.php" class="ml-auto mr-3   "><button class="btn btn-outline-info">See my products</button></a>
+            <a href="shipping.php" class="mr-3"><button class="btn btn-outline-info">Pending shipping</button></a>
+            <a href="logout.php" class="mr-3"><button class="btn btn-outline-info">Logout</button></a>
         </nav>
         <div class="container">
             <div class="row mx-1">
