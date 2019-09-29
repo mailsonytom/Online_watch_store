@@ -58,6 +58,7 @@ if (!isset($_SESSION['dealer'])) {
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Online Watch Store</a>
+            
         </nav>
         <div class="container">
             <div class="row mx-1">

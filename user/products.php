@@ -33,6 +33,7 @@ if (!isset($_SESSION['user_id'])) {
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Online Watch Store</a>
             <a href="purchases.php" class="ml-auto mr-3"><button class="btn btn-outline-warning">My purchases</button></a>
+            <a href="cart.php" class="mr-3"><button class="btn btn-outline-warning">Cart</button></a>
             <a href="logout.php" class="mr-3"><button class="btn btn-outline-info">Logout</button></a>
         </nav>
         <div class="container">
