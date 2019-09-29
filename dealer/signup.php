@@ -55,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Online Watch Store</a>
+        <a href="../user/" class="ml-auto mr-3"><button class="btn btn-outline-primary">I'm a user</button></a>
+        <a href="login.php" class="mr-3"><button class="btn btn-outline-primary">Login</button></a>
     </nav>
     <div class="container">
         <h2 class=" col-md-4 text-center mt-2 mx-auto">Dealer Sign-up</h2>

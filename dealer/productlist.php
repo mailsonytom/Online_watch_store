@@ -26,6 +26,9 @@ if (!isset($_SESSION['dealer'])) {
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Online Watch Store</a>
+            <a href="dashboard.php" class="ml-auto mr-3"><button class="btn btn-outline-info">Back to dashboard</button></a>
+            <a href="addnew.php" class="mr-3"><button class="btn btn-outline-info">Add new product</button></a>
+            <a href="logout.php" class="mr-3"><button class="btn btn-outline-primary">Logout</button></a>
         </nav>
         <div class="container">
             <div class="row mx-1">

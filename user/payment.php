@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
                 $data[] = $row;
             }
             foreach ($data as $a) {
-                $insertsql = "INSERT INTO purchases (product_id, user_id, count, date, shipped, price) VALUES(" .
+                $insertsql = "INSERT INTO purchases (product_id user_id, count, date, shipped, price) VALUES(" .
                     $a['product_id'] . "," . $user_id . "," . $a['count'] . "," . $datetoday . ", 0," . $a['price']
                     . ")";
                 mysqli_query($conn, $insertsql);
@@ -32,12 +32,6 @@ if (!isset($_SESSION['user_id'])) {
                     window.location = "products.php"
                     </script>';
         }
-    }
-    $user_id = $_SESSION['user_id'];
-    $sql = "SELECT price, product_id, count FROM products INNER JOIN cart on cart.product_id = products.id WHERE user_id='$user_id'";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_assoc($result)) {
-        $data[] = $row;
     }
     ?>
     <!doctype html>
