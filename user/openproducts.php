@@ -1,5 +1,6 @@
 <?php include 'connect.php' ?>
 <?php
+session_start();
 $limit = 10;
 if (isset($_GET["page"])) {
     $page  = $_GET["page"];
