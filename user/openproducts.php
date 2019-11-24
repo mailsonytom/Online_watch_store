@@ -1,6 +1,5 @@
 <?php include 'connect.php' ?>
 <?php
-session_start();
 $limit = 10;
 if (isset($_GET["page"])) {
     $page  = $_GET["page"];
@@ -8,7 +7,6 @@ if (isset($_GET["page"])) {
     $page = 1;
 };
 $start_from = ($page - 1) * $limit;
-$user_id = $_SESSION['user_id'];
 $sql = "SELECT * FROM products LIMIT $start_from, $limit";
 $result = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
