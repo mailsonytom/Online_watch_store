@@ -30,46 +30,122 @@ if (isset($_SESSION['user_id'])) {
 <html lang="en">
 
 <head>
-    <title>User login</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Online Watch Store</title>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/mdb.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/style.min.css" rel="stylesheet">
+    <style type="text/css">
+        html,
+        body,
+        header,
+        .carousel {
+            height: 90vh;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Online Watch Store</a>
-        <a href="../dealer/" class="ml-auto mr-3"><button class="btn btn-outline-primary">I'm a dealer</button></a>
-        <a href="../admin/" class="mr-3"><button class="btn btn-outline-primary">Login as admin</button></a>
-        <a href="signup.php" class="mr-3"><button class="btn btn-outline-info">Sign up</button></a>
-    </nav>
-    <div class="container">
-        <div class="jumbotron banner">
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="mt-5">Sign-in as user</h2>
-                <p>
-                    The watch store will enable the best available watches for you to purchase and see them online.
-                    <br><br>
-                    You can add them to your cart and purchase them at your convenicene.
-                </p>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+
+            <!-- Brand -->
+            <a class="navbar-brand waves-effect" href="/">
+                <strong class="blue-text">OWS</strong>
+            </a>
+
+            <!-- Collapse -->
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/">About MDB</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/">Free download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/">Free
+                            tutorials</a>
+                    </li>
+                </ul>
+
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a href="signup.php" class="nav-link border border-light rounded waves-effect">
+                            Sign up
+                        </a>
+                    </li>
+                </ul>
+
             </div>
-            <div class="col-md-6 mt-5 p-3 border border-info rounded">
+
+        </div>
+    </nav>
+    <!-- Navbar -->
+    <div class="container-fluid">
+        <div class="row" style="height: 90vh;">
+            <div class="col-md-6" style="background-image: url('../assets/images/loginb.jpg'); background-size:cover;">
+
+            </div>
+            <div class="col-md-6 mt-5 p-5">
+                <h2 class="mt-5 text-dark">Sign-in as user</h2>
+                <p class="text-muted">
+                    You can add them to your cart and purchase them at your convenicene
+                </p>
                 <form action="" method="POST">
-                    <span class="error"><?php echo $error; ?></span>
+                    
                     <div class="form-group">
-                        <label>Email address</label>
-                        <input type="email" name="email" class="form-control">
+                        <label class="text-secondary">Email address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control">
+                        <label class="text-secondary">Password</label>
+                        <input type="password" name="password" placeholder="Password" class="form-control">
                     </div>
                     <input type="submit" value="Login" class="btn btn-secondary">
+                    <br><span class="error"><?php echo $error; ?></span>
                 </form>
             </div>
         </div>
     </div>
+    <!--Footer-->
+    <footer class="page-footer text-center font-small wow fadeIn">
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2019 Copyright: Online Watch Store </a>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../assets/js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../assets/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
 </body>
 
 </html>
