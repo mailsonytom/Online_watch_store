@@ -20,7 +20,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap</title>
+    <title>Online watch store</title>
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
     <link href="../assets/css/mdb.min.css" rel="stylesheet">
@@ -105,7 +105,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             <!--First slide-->
             <div class="carousel-item active">
-                <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+                <div class="view" style="background-image: url('../assets/images/c1.jpg'); background-repeat: no-repeat; background-size: cover;">
 
                     <!-- Mask & flexbox options-->
                     <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -113,23 +113,17 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <!-- Content -->
                         <div class="text-center white-text mx-5 wow fadeIn">
                             <h1 class="mb-4">
-                                <strong>Learn Bootstrap 4 with MDB</strong>
+                                <strong>Buy your dream watch !! </strong>
                             </h1>
 
                             <p>
-                                <strong>Best & free guide of responsive web design</strong>
+                                <strong>Best & quality watches from around the world for your style.</strong>
                             </p>
 
                             <p class="mb-4 d-none d-md-block">
-                                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                    written versions
-                                    available. Create your own, stunning website.</strong>
+                                OWS is the largest and most trusted authorized retailer for luxury watches in India. Buy 100% genuine luxury Watches for Men & Women
                             </p>
 
-                            <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                                free tutorial
-                                <i class="fas fa-graduation-cap ml-2"></i>
-                            </a>
                         </div>
                         <!-- Content -->
 
@@ -142,7 +136,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             <!--Second slide-->
             <div class="carousel-item">
-                <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%283%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+                <div class="view" style="background-image: url('../assets/images/c2.jpg'); background-repeat: no-repeat; background-size: cover;">
 
                     <!-- Mask & flexbox options-->
                     <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -150,23 +144,17 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <!-- Content -->
                         <div class="text-center white-text mx-5 wow fadeIn">
                             <h1 class="mb-4">
-                                <strong>Learn Bootstrap 4 with MDB</strong>
+                                <strong>Know your time, because time is money !! </strong>
                             </h1>
 
                             <p>
-                                <strong>Best & free guide of responsive web design</strong>
+                                <strong>Best & quality watches from around the world for your style.</strong>
                             </p>
 
                             <p class="mb-4 d-none d-md-block">
-                                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                    written versions
-                                    available. Create your own, stunning website.</strong>
+                                OWS is the largest and most trusted authorized retailer for luxury watches in India. Buy 100% genuine luxury Watches for Men & Women
                             </p>
 
-                            <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                                free tutorial
-                                <i class="fas fa-graduation-cap ml-2"></i>
-                            </a>
                         </div>
                         <!-- Content -->
 
@@ -179,7 +167,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             <!--Third slide-->
             <div class="carousel-item">
-                <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+                <div class="view" style="background-image: url('../assets/images/c3.jpg'); background-repeat: no-repeat; background-size: cover;">
 
                     <!-- Mask & flexbox options-->
                     <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -187,23 +175,17 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <!-- Content -->
                         <div class="text-center white-text mx-5 wow fadeIn">
                             <h1 class="mb-4">
-                                <strong>Learn Bootstrap 4 with MDB</strong>
+                                <strong>Keep your time in style !! </strong>
                             </h1>
 
                             <p>
-                                <strong>Best & free guide of responsive web design</strong>
+                                <strong>Best & quality watches from around the world for your style.</strong>
                             </p>
 
                             <p class="mb-4 d-none d-md-block">
-                                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                    written versions
-                                    available. Create your own, stunning website.</strong>
+                                OWS is the largest and most trusted authorized retailer for luxury watches in India. Buy 100% genuine luxury Watches for Men & Women
                             </p>
 
-                            <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                                free tutorial
-                                <i class="fas fa-graduation-cap ml-2"></i>
-                            </a>
                         </div>
                         <!-- Content -->
 
