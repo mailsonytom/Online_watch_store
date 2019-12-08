@@ -8,10 +8,35 @@ if (!isset($_SESSION['user_id'])) {
 } else {
     $cardno = $expiry = $cvv = $error = "";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $flag = 0;
-        if (empty($_POST['cardno']) || empty($_POST['expiry']) || empty($_POST['cvv'])) {
-            $error = "Please fill in the card details";
-            $flag == 1;
+        if (empty($_POST["cardno"])) {
+            $error = "Card number is required";
+            $flag = 1;
+        } else {
+            $cardno = $_POST["cardno"];
+            if (!preg_match("/^[1-9][0-9]{15}$/", $cardno)) {
+                $flag = 1;
+                $error = "Wrong card number";
+            }
+        }
+        if (empty($_POST["expiry"])) {
+            $error = "Expiry date is required";
+            $flag = 1;
+        } else {
+            $exp = $_POST["expiry"];
+            if (!preg_match("/^[1][0-9]\/[0-9]{2}$/", $exp)) {
+                $flag = 1;
+                $error = "Wrong expiry date";
+            }
+        }
+        if (empty($_POST["expiry"])) {
+            $error = "Expiry date is required";
+            $flag = 1;
+        } else {
+            $cvv = $_POST["cvv"];
+            if (!preg_match("/^[0-9]{3}$/", $cvv)) {
+                $flag = 1;
+                $error = "Wrong cvv";
+            }
         }
         if ($flag == 0) {
             $datetoday = date("Y/m/d");
@@ -42,19 +67,65 @@ if (!isset($_SESSION['user_id'])) {
     <html lang="en">
 
     <head>
-        <title>
-            User Sign up
-        </title>
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Online Watch Store</title>
+        <link href="../assets/css/bootstrap.css" rel="stylesheet">
+        <link href="../assets/css/mdb.min.css" rel="stylesheet">
+        <link href="../assets/css/style.css" rel="stylesheet">
+        <link href="../assets/css/style.min.css" rel="stylesheet">
+        <style type="text/css">
+            html,
+            body,
+            header,
+            .carousel {
+                height: 60vh;
+            }
+        </style>
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Online Watch Store</a>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="/">
+                    <strong class="blue-text">OWS</strong>
+                </a>
+
+                <!-- Collapse -->
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item mr-2">
+                            <a href="products.php" class="nav-link border border-light rounded waves-effect">
+                                Products
+                            </a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="logout.php" class="nav-link border border-light rounded waves-effect">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
         </nav>
+        <!-- Navbar -->
         <div class="container">
-            <div class="row mt-5 mb-3">
+            <div class="row mt-5 pt-5 mb-3">
                 <div class="col-md-8">
                     <h3 class="h3">Complete your payment</h3>
                 </div>
@@ -66,13 +137,31 @@ if (!isset($_SESSION['user_id'])) {
                     <label>Enter expiry date</label>
                     <input type="text" name="expiry" class="form-control" placeholder="MM/YY">
                     <label>Enter CVV</label>
-                    <input type="password" name="cvv" class="form-control" placeholder="">
+                    <input type="password" name="cvv" class="form-control" placeholder="CVV">
                     <input type="submit" value="Submit" class="btn btn-secondary mt-3">
+                    <br>
+                    <span class="error"><?php echo $error; ?></span>
                 </form>
-
             </div>
         </div>
         <hr>
+        </footer>
+        <!--/.Footer-->
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="../assets/js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="../assets/js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
     </body>
 <?php } ?>
 

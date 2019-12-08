@@ -17,21 +17,65 @@ if (!isset($_SESSION['user_id'])) {
     <html lang="en">
 
     <head>
-        <title>
-            User Sign up
-        </title>
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Online Watch Store</title>
+        <link href="../assets/css/bootstrap.css" rel="stylesheet">
+        <link href="../assets/css/mdb.min.css" rel="stylesheet">
+        <link href="../assets/css/style.css" rel="stylesheet">
+        <link href="../assets/css/style.min.css" rel="stylesheet">
+        <style type="text/css">
+            html,
+            body,
+            header,
+            .carousel {
+                height: 60vh;
+            }
+        </style>
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Online Watch Store</a>
-            <a href="products.php" class="ml-auto mr-3"><button class="btn btn-outline-warning">Products</button></a>
-            <a href="logout.php" class="mr-3"><button class="btn btn-outline-info">Logout</button></a>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="/">
+                    <strong class="blue-text">OWS</strong>
+                </a>
+
+                <!-- Collapse -->
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item mr-2">
+                            <a href="products.php" class="nav-link border border-light rounded waves-effect">
+                                Products
+                            </a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="logout.php" class="nav-link border border-light rounded waves-effect">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
         </nav>
+        <!-- Navbar -->
         <div class="container">
-            <div class="row mt-5 mb-3 top-strip">
+            <div class="row mt-5 mb-3 pt-5">
                 <div class="col-md-8">
                     <h3 class="h3">Your online watch store cart</h3>
                 </div>
@@ -46,6 +90,7 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                             <div class="col-md-3">
                                 <h4 class="alert-heading"><?php echo $a['name']; ?></h4>
+                                <p class="text-dark"><?php echo $a['description']; ?></p>
                                 <span class="badge badge-primary"><?php echo $a['brand']; ?></span>
                                 <span class="badge badge-secondary"><?php echo $a['code']; ?></span>
                                 <span class="badge badge-success"><?php echo $a['category']; ?></span>
@@ -63,7 +108,8 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 <?php } ?>
             </div>
-            <div class="row mt-5 mb-3 top-strip">
+            <hr>
+            <div class="row mt-5 mb-3">
                 <div class="col-md-8">
                     <h3 class="h3">Total amount: ₹<?php echo $total; ?></h3>
                     <?php
@@ -74,6 +120,31 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
         <hr>
+        <!--Footer-->
+        <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+            <!--Copyright-->
+            <div class="footer-copyright py-3">
+                © 2019 Copyright: Online Watch Store </a>
+            </div>
+            <!--/.Copyright-->
+
+        </footer>
+        <!--/.Footer-->
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="../assets/js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="../assets/js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
     </body>
 <?php } ?>
 

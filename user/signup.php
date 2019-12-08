@@ -1,13 +1,61 @@
 <?php include 'connect.php' ?>
 <?php
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 $name = $email = $password = $address = $phone = $gender = $error = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $flag = 0;
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    if (empty($_POST["name"])) {
+        $error = "Name is required";
+        $flag = 1;
+    } else {
+        $name = test_input($_POST['name']);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+            $flag = 1;
+            $error = "Only letters and white space allowed";
+        }
+    }
+    if (empty($_POST["email"])) {
+        $error = "Email is required";
+        $flag = 1;
+    } else {
+        $email = test_input($_POST['email']);
+        // check if email format is correct
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL, $email)) {
+            $flag = 1;
+            $error = "Wrong email format";
+        }
+    }
+    if (empty($_POST["password"])) {
+        $error = "Password is required";
+        $flag = 1;
+    } else {
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    }
+    if (empty($_POST["phone"])) {
+        $error = "Phone number is required";
+        $flag = 1;
+    } else {
+        $phone = test_input($_POST['phone']);
+        $parent_pass = password_hash($_POST['phone'], PASSWORD_DEFAULT);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[1-9][0-9]{9}$/", $phone)) {
+            $flag = 1;
+            $error = "Wrong phone number format";
+        }
+    }
+    if (empty($_POST["address"])) {
+        $error = "Address is required";
+        $flag = 1;
+    } else {
+        $address = test_input($conn->real_escape_string($_POST['address']));
+    }
     $gender = $_POST['gender'];
     $select_query = "SELECT email FROM users";
     $result = mysqli_query($conn, $select_query);
@@ -107,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-md-6 mt-5 px-5 py-5">
                 <h4 class="text-dark">User registration</h4>
                 <p class="text-muted">
-                    Sign up for the luxury of time !! 
+                    Sign up for the luxury of time !!
                 </p>
                 <form action="" method="POST">
                     <span class="error"><?php echo $error; ?></span>
@@ -132,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="form-group">
                         <label class="text-secondary">Phone number</label>
-                        <input type="text" class="form-control" name="phone" placeholder="Enter your phone"> 
+                        <input type="text" class="form-control" name="phone" placeholder="Enter your phone">
                     </div>
                     <div class="form-group">
                         <label class="text-secondary">Address</label>
