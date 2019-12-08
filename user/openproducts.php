@@ -54,18 +54,17 @@ while ($row = mysqli_fetch_assoc($result)) {
 
                 <!-- Left -->
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link waves-effect" href="/">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="../">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/">About MDB</a>
+                        <a class="nav-link waves-effect" href="about.html">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/">Free download</a>
+                        <a class="nav-link waves-effect" href="../dealer/">Dealer Portal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/">Free
-                            tutorials</a>
+                        <a class="nav-link waves-effect" href="../admin/">Admin Portal</a>
                     </li>
                 </ul>
 

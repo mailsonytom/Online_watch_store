@@ -23,3 +23,146 @@ html {
 .page-footer {
     background-color: #929FBA
 }
+
+
+/* Required height of parents of the Half Page Carousel for proper displaying carousel itself */
+
+html,
+body,
+.view {
+    height: 100%;
+}
+
+
+/* Half Page Carousel itself*/
+
+.carousel {
+    height: 50%;
+}
+
+.carousel .carousel-inner {
+    height: 100%;
+}
+
+.carousel .carousel-inner .carousel-item,
+.carousel .carousel-inner .active {
+    height: 100%;
+}
+
+
+/* Adjustment for mobile devices*/
+
+@media (max-width: 776px) {
+    .carousel {
+        height: 100%;
+    }
+}
+
+
+/* Footer color for sake of consistency with Navbar */
+
+.page-footer {
+    background-color: rgb(27, 68, 158);
+}
+
+.error {
+    color: red;
+    font-size: .8em;
+}
+
+.product-grid6 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
+.product-grid6,
+.product-grid6 .product-image6 {
+    overflow: hidden;
+}
+
+.product-grid6 {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    position: relative;
+    transition: all .5s ease 0s;
+}
+
+.product-grid6:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3)
+}
+
+.product-grid6 .product-image6 a {
+    display: block
+}
+
+.product-grid6 .product-image6 img {
+    width: 100%;
+    height: 20em;
+    transition: all .5s ease 0s
+}
+
+.product-grid6:hover .product-image6 img {
+    transform: scale(1.1)
+}
+
+.product-grid6 .product-content {
+    padding: 12px 12px 15px;
+    transition: all .5s ease 0s
+}
+
+.product-grid6 .title {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0 0 10px;
+    transition: all .3s ease 0s;
+}
+
+.product-grid6 .price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2e86de;
+}
+
+.top-strip {
+    background-color: rgb(61, 74, 85);
+}
+
+.notify-badge {
+    position: absolute;
+    background: rgba(0, 0, 255, 1);
+    height: 2rem;
+    top: 1rem;
+    right: 1.5rem;
+    width: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    ;
+    font-size: 1rem;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid blue;
+}
+
+.banner {
+    height: 20em;
+    background-image: url("../images/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.left-banner {
+    background-image: url("../images/c3.jpg");
+    background-size: fit;
+    background-repeat: no-repeat;
+}
+
+.login-left-box {
+    background-size: cover;
+    background-image: url("../images/loginb.jpg");
+}
+
+.left-banner-dealer {
+    background-image: url("../images/dealersu.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

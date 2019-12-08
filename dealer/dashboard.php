@@ -14,7 +14,7 @@ if (!isset($_SESSION['dealer'])) {
             Add new watch
         </title>
         <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.min.css">
     </head>
 
     <body>

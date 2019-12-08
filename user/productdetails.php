@@ -15,10 +15,10 @@ if (!isset($_SESSION['user_id'])) {
         $flag = 0;
         if (empty($_POST['comment'])) {
             $flag = 1;
-            $error = "Comment is necesary to submit";
+            $error = "Type your comment first";
         }
         if ($flag == 0) {
-            $comment = $_POST['comment'];
+            $comment = test_input($conn->real_escape_string($_POST['comment']));
             $insertsql = "INSERT INTO comments (user_id, product_id, comment) VALUES ('$user_id', '$product_id', '$comment')";
             mysqli_query($conn, $insertsql);
         }
