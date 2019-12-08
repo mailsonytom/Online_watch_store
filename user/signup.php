@@ -34,57 +34,141 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 
 <head>
-    <title>User Sign up</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Online Watch Store</title>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/mdb.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/style.min.css" rel="stylesheet">
+    <style type="text/css">
+        html,
+        body,
+        header,
+        .carousel {
+            height: 90vh;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Online Watch Store</a>
-        <a href="login.php" class="ml-auto"><button class="btn btn-outline-info">Login</button></a>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+
+            <!-- Brand -->
+            <a class="navbar-brand waves-effect" href="/">
+                <strong class="blue-text">OWS</strong>
+            </a>
+
+            <!-- Collapse -->
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/">About MDB</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/">Free download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/">Free
+                            tutorials</a>
+                    </li>
+                </ul>
+
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a href="login.php" class="nav-link border border-light rounded waves-effect">
+                            Sign in
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
     </nav>
-    <div class="container-fluid p-0">
-        <div class="row mx-1 p-0">
+    <!-- Navbar -->
+    <div class="container-fluid">
+        <div class="row p-0">
             <div class="left-banner col-md-6 p-0">
 
             </div>
-            <div class="col-md-6 mx-auto mt-5 px-2 py-2">
-                <h4>User registration</h4>
+            <div class="col-md-6 mt-5 px-5 py-5">
+                <h4 class="text-dark">User registration</h4>
+                <p class="text-muted">
+                    Sign up for the luxury of time !! 
+                </p>
                 <form action="" method="POST">
                     <span class="error"><?php echo $error; ?></span>
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="name">
+                        <label class="text-secondary">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter your name">
                     </div>
                     <div class="form-group">
-                        <label>Email address</label>
-                        <input type="email" class="form-control" name="email">
+                        <label class="text-secondary">Email address</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email">
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password">
+                        <label class="text-secondary">Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Enter your password">
                     </div>
                     <div class="form-group">
-                        <label>Gender</label>
+                        <label class="text-secondary">Gender</label>
                         <select class="form-control" id="gender" name="gender">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Phone number</label>
-                        <input type="text" class="form-control" name="phone">
+                        <label class="text-secondary">Phone number</label>
+                        <input type="text" class="form-control" name="phone" placeholder="Enter your phone"> 
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" name="address" id="address">
+                        <label class="text-secondary">Address</label>
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter your address">
                     </div>
                     <input type="submit" name="submit" value="Sign up" class="btn btn-secondary">
                 </form>
             </div>
             <br>
         </div>
+    </div>
+    <!--Footer-->
+    <footer class="page-footer text-center font-small wow fadeIn">
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2019 Copyright: Online Watch Store </a>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../assets/js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../assets/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
 </body>
 
 </html>
