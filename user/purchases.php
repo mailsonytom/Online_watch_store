@@ -110,6 +110,16 @@ if (!isset($_SESSION['user_id'])) {
                                 <span class="badge badge-warning"><?php echo $a['type']; ?></span>
                                 <p class="mb-0">Price in INR: ₹<?php echo $a['price']; ?></p>
                             </div>
+                            <div class="col-md-1 offset-4">
+                                <?php if(!$a["shipped"]){?>
+                                    <a href="cancel.php?id=<?php echo $a['id']; ?>"><span class="mt-4 badge badge-danger">Cancel order</span></a>
+                                <?php }
+                                else { ?>
+                                    <span class="mt-4 badge badge-danger">You cannot cancel a shipped order</span>
+                                <?php }
+                                ?>
+                                
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
