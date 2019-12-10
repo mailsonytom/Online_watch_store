@@ -28,24 +28,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 
 <head>
-    <title>
-        Dealer sign in
-    </title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Online Watch Store</title>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/mdb.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/style.min.css" rel="stylesheet">
+    <style type="text/css">
+        html,
+        body,
+        header,
+        .carousel {
+            height: 60vh;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Online Watch Store</a>
-        <a href="signup.php" class="ml-auto mr-3"><button class="btn btn-outline-info">Sign up</button></a>
-        <a href="../user/" class="mr-3"><button class="btn btn-outline-primary">I'm a user</button></a>
-        <a href="../admin/" class="mr-3"><button class="btn btn-outline-primary">Login as admin</button></a>
-    </nav>
-    <div class="container-fluid">
-        <div class="row" style="height: 100vh;">
-            <div class="left-banner-dealer col-md-6 p-0">
 
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+
+            <!-- Brand -->
+            <a class="navbar-brand waves-effect" href="/">
+                <strong class="blue-text">OWS</strong>
+            </a>
+
+            <!-- Collapse -->
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                </ul>
+
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item mr-2">
+                        <a href="signup.php" class="nav-link border border-light rounded waves-effect">
+                            Sign up
+                        </a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="../user/" class="nav-link border border-light rounded waves-effect">
+                            User
+                        </a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a href="../admin/" class="nav-link border border-light rounded waves-effect">
+                            Admin
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+    <!-- Navbar -->
+    <div class="container-fluid">
+        <div class="row mt-5" style="height: 100vh;">
+            <div class="left-banner-dealer col-md-6 p-0">
             </div>
             <div class="col-md-6">
                 <h2 class=" col-md-12 mx-auto mt-5 text-center">Sign-in as dealer</h2>

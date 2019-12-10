@@ -5,19 +5,74 @@ if (!isset($_SESSION['dealer'])) {
                 window.location = "login.php"
                  </script>';
 } else {
+    function test_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
     $dealer_id = $_SESSION['dealer'];
     $name = $brand = $code = $category = $gender = $type = $price = $image = $description = $error = $count = "";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $flag = 0;
-        $name = $_POST['name'];
-        $brand = $_POST['brand'];
-        $code = $_POST['code'];
+        if (empty($_POST["name"])) {
+            $error = "Name is required";
+            $flag = 1;
+        } else {
+            $name = test_input($_POST['name']);
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+                $flag = 1;
+                $error = "Only letters and white space allowed";
+            }
+        }
+        if (empty($_POST["brand"])) {
+            $error = "Brand is required";
+            $flag = 1;
+        } else {
+            $brand = test_input($_POST['brand']);
+            if (!preg_match("/^[a-zA-Z ]*$/", $brand)) {
+                $flag = 1;
+                $error = "Only letters and white space allowed";
+            }
+        }
+        if (empty($_POST["code"])) {
+            $error = "Code is required";
+            $flag = 1;
+        } else {
+            $code = test_input($_POST['code']);
+            if (!preg_match("/^[a-zA-Z\d]*$/", $code)) {
+                $flag = 1;
+                $error = "Wrong code format. Use letters and numbers only.";
+            }
+        }
+
+
         $category = $_POST['category'];
         $gender = $_POST['gender'];
         $type = $_POST['type'];
-        $price = $_POST['price'];
-        $count = $_POST['count'];
-        $description = $_POST['description'];
+        if (empty($_POST["price"])) {
+            $error = "Price is required";
+            $flag = 1;
+        } else {
+            $price = test_input($_POST['price']);
+            if (!preg_match("/^[\d]*$/", $price)) {
+                $flag = 1;
+                $error = "Price is in wrong format.";
+            }
+        }
+        if (empty($_POST["count"])) {
+            $error = "Count is required";
+            $flag = 1;
+        } else {
+            $count = test_input($_POST['count']);
+            if (!preg_match("/^[\d]*$/", $count)) {
+                $flag = 1;
+                $error = "Count is in wrong format.";
+            }
+        }
+        $description = test_input($conn->real_escape_string($_POST['description']));
         $image = $_FILES['image']['name'];
         $extension = end(explode(".", $image));
         $newfilename = $code . "." . $extension;
@@ -28,13 +83,6 @@ if (!isset($_SESSION['dealer'])) {
                 $error = "Product code already exist";
                 $flag = 1;
             }
-        }
-        if (
-            empty($_POST['name']) || empty($_POST['brand']) || empty($_POST['code']) || empty($_POST['category'])
-            || empty($_POST['gender']) || empty($_POST['type']) || empty($_POST['price']) || empty($_POST['count']) || empty($_POST['description'])
-        ) {
-            $error = "Please fill in all the details";
-            $flag = 1;
         }
         if (!$flag) {
             move_uploaded_file($_FILES['image']['tmp_name'], $target);
@@ -53,20 +101,78 @@ if (!isset($_SESSION['dealer'])) {
     <head>
         <title>
             Add new watch
-        </title>
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-    </head>
+            </title<!doctype html>
+            <html lang="en">
+
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <meta http-equiv="x-ua-compatible" content="ie=edge">
+                <title>Online Watch Store</title>
+                <link href="../assets/css/bootstrap.css" rel="stylesheet">
+                <link href="../assets/css/mdb.min.css" rel="stylesheet">
+                <link href="../assets/css/style.css" rel="stylesheet">
+                <link href="../assets/css/style.min.css" rel="stylesheet">
+                <style type="text/css">
+                    html,
+                    body,
+                    header,
+                    .carousel {
+                        height: 60vh;
+                    }
+                </style>
+            </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Online Watch Store</a>
-            <a href="dashboard.php" class="ml-auto mr-3   "><button class="btn btn-outline-info">Back to dashboard</button></a>
-            <a href="shipping.php" class="mr-3"><button class="btn btn-outline-info">Pending shipping</button></a>
-            <a href="logout.php" class="mr-3"><button class="btn btn-outline-info">Logout</button></a>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="/">
+                    <strong class="blue-text">OWS</strong>
+                </a>
+
+                <!-- Collapse -->
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item mr-2">
+                            <a href="dashboard.php" class="nav-link border border-light rounded waves-effect">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="shipping.php" class="nav-link border border-light rounded waves-effect">
+                                Pending shipping
+                            </a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="logout.php" class="nav-link border border-light rounded waves-effect">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
         </nav>
-        <div class="container">
-            <div class="row mx-1">
+        <!-- Navbar -->
+        <div class="container-fluid">
+            <div class="row" style="height: 50vh; background-image:url('../assets/images/banner.jpg'); background-size: cover;">
+                <div class="col-md-12 text-center">
+                </div>
+            </div>
+            <div class="row mx-1 pt-5">
                 <h2 class=" col-md-5 text-center mt-2 mx-auto">Add New Watch</h2>
                 <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded" enctype="multipart/form-data">
                     <span class="error"><?php echo $error; ?></span>
@@ -113,7 +219,7 @@ if (!isset($_SESSION['dealer'])) {
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input type="text" class="form-control" name="description">
+                        <textarea type="text" rows="5" class="form-control" name="description"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Image</label><br>
@@ -123,8 +229,27 @@ if (!isset($_SESSION['dealer'])) {
                 </form>
                 <br>
             </div>
+        </div>
+        </footer>
+        <!--/.Footer-->
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="../assets/js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="../assets/js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="../assets/js/mdb.min.js"></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+        </script>
 
     </body>
+
 <?php } ?>
 
     </html>
