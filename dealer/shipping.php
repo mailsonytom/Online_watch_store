@@ -124,8 +124,10 @@ if (!isset($_SESSION['dealer'])) {
                                 </div>
                             </div>
                         </div>
-                <?php }
-                    } ?>
+                    <?php }
+                        } else { ?>
+                    <span class="text-danger">No data to display</span>
+                <?php } ?>
             </div>
             <?php
                 $sql = "SELECT COUNT(purchases.id) FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE dealer_id='$dealer_id' AND shipped=0";

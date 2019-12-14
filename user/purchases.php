@@ -123,8 +123,10 @@ if (!isset($_SESSION['user_id'])) {
                                 </div>
                             </div>
                         </div>
-                <?php }
-                    } ?>
+                    <?php }
+                        } else { ?>
+                    <span class="text-danger">No data to display</span>
+                <?php } ?>
             </div>
             <?php
                 $sql = "SELECT COUNT(purchases.id) FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE user_id='$user_id'";

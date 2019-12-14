@@ -108,8 +108,10 @@ if (!isset($_SESSION['user_id'])) {
                                 </div>
                             </div>
                         </div>
-                <?php }
-                    } ?>
+                    <?php }
+                        } else { ?>
+                    <span class="text-danger">No data to display</span>
+                <?php } ?>
             </div>
             <hr>
             <div class="row mt-5 mb-3">
