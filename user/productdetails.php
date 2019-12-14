@@ -1,6 +1,13 @@
 <?php include 'connect.php' ?>
 <?php
 session_start();
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 if (!isset($_SESSION['user_id'])) {
     echo '<script type="text/javascript">
                     window.location = "login.php"
@@ -9,6 +16,8 @@ if (!isset($_SESSION['user_id'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_SESSION['user_id'];
         $product_id = $_POST['product_id'];
+        $commentsql = "SELECT * FROM comments WHERE product_id = '$product_id' AND user_id='$user_id'";
+        $commentresult = mysqli_query($conn, $commentsql);
         while ($commentrow = mysqli_fetch_assoc($commentresult)) {
             $data[] = $commentrow;
         }
