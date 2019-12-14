@@ -6,7 +6,6 @@ if (!isset($_SESSION['user_id'])) {
                     window.location = "login.php"
                      </script>';
 } else {
-    $data[] = [];
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_SESSION['user_id'];
         $product_id = $_POST['product_id'];
@@ -32,6 +31,7 @@ if (!isset($_SESSION['user_id'])) {
         $row = mysqli_fetch_assoc($result);
         $commentsql = "SELECT * FROM comments WHERE product_id = '$product_id' AND user_id='$user_id'";
         $commentresult = mysqli_query($conn, $commentsql);
+        $num_rows = mysqli_num_rows($commentresult);
         while ($commentrow = mysqli_fetch_assoc($commentresult)) {
             $data[] = $commentrow;
         }
@@ -133,9 +133,12 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                     </form>
                     <hr>
-                    <?php foreach ($data as $a) { ?>
-                        <p class="card-text"><?php echo $a['comment'] ?></p>
-                    <?php } ?>
+                    <?php
+                        if ($num_rows > 0) {
+                            foreach ($data as $a) { ?>
+                            <p class="card-text"><?php echo $a['comment'] ?></p>
+                    <?php }
+                        } ?>
                 </div>
             </div>
         </div>

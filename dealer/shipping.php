@@ -6,7 +6,6 @@ if (!isset($_SESSION['dealer'])) {
                     window.location = "login.php"
                      </script>';
 } else {
-    $data[] = [];
     $limit = 8;
     if (isset($_GET["page"])) {
         $page  = $_GET["page"];

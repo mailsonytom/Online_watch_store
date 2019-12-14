@@ -6,7 +6,6 @@ if (!isset($_SESSION['dealer'])) {
                     window.location = "login.php"
                      </script>';
 } else {
-    $data[] = [];
     $error = "";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $product_id = $_POST['product_id'];
@@ -128,10 +127,6 @@ if (!isset($_SESSION['dealer'])) {
                             <input type="Submit" value="Submit" class="btn  btn-secondary mt-3">
                         </div>
                     </form>
-                    <hr>
-                    <?php foreach ($data as $a) { ?>
-                        <p class="card-text"><?php echo $a['comment'] ?></p>
-                    <?php } ?>
                 </div>
             </div>
         </div>
