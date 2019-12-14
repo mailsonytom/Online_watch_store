@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="nav-link waves-effect" href="../">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" href="about.html">About us</a>
+                        <a class="nav-link waves-effect" href="about.php">About us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link waves-effect" href="../dealer/">Dealer Portal</a>
