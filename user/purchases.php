@@ -16,6 +16,7 @@ if (!isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT * FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE user_id='$user_id' LIMIT $start_from, $limit";
     $result = mysqli_query($conn, $sql);
+    $num_rows = mysqli_num_rows($result);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
     }
@@ -95,34 +96,35 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="row">
                 <?php $total = 0;
-                    foreach ($data as $a) { ?>
-                    <div class="alert alert-success col-md-12" role="alert">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <img src="../images/<?php echo $a['image'] ?>" alt="" class="img-fluid col-md-8" />
-                            </div>
-                            <div class="col-md-3">
-                                <h4 class="alert-heading"><?php echo $a['name']; ?></h4>
-                                <span class="badge badge-primary"><?php echo $a['brand']; ?></span>
-                                <span class="badge badge-secondary"><?php echo $a['code']; ?></span>
-                                <span class="badge badge-success"><?php echo $a['category']; ?></span>
-                                <span class="badge badge-danger"><?php echo $a['gender']; ?></span>
-                                <span class="badge badge-warning"><?php echo $a['type']; ?></span>
-                                <p class="mb-0">Price in INR: ₹<?php echo $a['price']; ?></p>
-                            </div>
-                            <div class="col-md-1 offset-4">
-                                <?php if(!$a["shipped"]){?>
-                                    <a href="cancel.php?id=<?php echo $a['id']; ?>"><span class="mt-4 badge badge-danger">Cancel order</span></a>
-                                <?php }
-                                else { ?>
-                                    <span class="mt-4 badge badge-danger">You cannot cancel a shipped order</span>
-                                <?php }
-                                ?>
-                                
+                    if ($num_rows > 0) {
+                        foreach ($data as $a) { ?>
+                        <div class="alert alert-success col-md-12" role="alert">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="../images/<?php echo $a['image'] ?>" alt="" class="img-fluid col-md-8" />
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 class="alert-heading"><?php echo $a['name']; ?></h4>
+                                    <span class="badge badge-primary"><?php echo $a['brand']; ?></span>
+                                    <span class="badge badge-secondary"><?php echo $a['code']; ?></span>
+                                    <span class="badge badge-success"><?php echo $a['category']; ?></span>
+                                    <span class="badge badge-danger"><?php echo $a['gender']; ?></span>
+                                    <span class="badge badge-warning"><?php echo $a['type']; ?></span>
+                                    <p class="mb-0">Price in INR: ₹<?php echo $a['price']; ?></p>
+                                </div>
+                                <div class="col-md-1 offset-4">
+                                    <?php if (!$a["shipped"]) { ?>
+                                        <a href="cancel.php?id=<?php echo $a['id']; ?>"><span class="mt-4 badge badge-danger">Cancel order</span></a>
+                                    <?php } else { ?>
+                                        <span class="mt-4 badge badge-danger">You cannot cancel a shipped order</span>
+                                    <?php }
+                                                ?>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
+                <?php }
+                    } ?>
             </div>
             <?php
                 $sql = "SELECT COUNT(purchases.id) FROM products INNER JOIN purchases on purchases.product_id = products.id WHERE user_id='$user_id'";
