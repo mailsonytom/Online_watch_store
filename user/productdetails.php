@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id'])) {
                     window.location = "login.php"
                      </script>';
 } else {
+    $data[] = [];
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_SESSION['user_id'];
         $product_id = $_POST['product_id'];

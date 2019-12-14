@@ -166,3 +166,9 @@ body,
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.admin-banner {
+    background-image: url("../images/admin.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

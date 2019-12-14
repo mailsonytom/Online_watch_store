@@ -126,22 +126,29 @@ if (!isset($_SESSION['user_id'])) {
         <!-- Navbar -->
         <div class="container">
             <div class="row mt-5 pt-5 mb-3">
-                <div class="col-md-8">
-                    <h3 class="h3">Complete your payment</h3>
-                </div>
             </div>
             <div class="row">
-                <form action="" method="POST">
-                    <label>Enter card number</label>
-                    <input type="text" name="cardno" class="form-control" placeholder="Enter card nubmer" />
-                    <label>Enter expiry date</label>
-                    <input type="text" name="expiry" class="form-control" placeholder="MM/YY">
-                    <label>Enter CVV</label>
-                    <input type="password" name="cvv" class="form-control" placeholder="CVV">
-                    <input type="submit" value="Submit" class="btn btn-secondary mt-3">
-                    <br>
-                    <span class="error"><?php echo $error; ?></span>
-                </form>
+                <div class="col-md-6 offset-3" style="border: 1px solid black; border-radius: 5px;">
+                    <div class="col-md-12 m-2">
+                        <div class="col-md-12 text-center">
+                            <h3>Complete your payment</h3>
+                        </div>
+                        <div class="col-md-6 offset-3">
+                            <img src="../assets/images/cards.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <form action="" method="POST">
+                        <label>Enter card number</label>
+                        <input type="text" name="cardno" class="form-control" placeholder="Enter card nubmer" />
+                        <label>Enter expiry date</label>
+                        <input type="text" name="expiry" class="form-control" placeholder="MM/YY">
+                        <label>Enter CVV</label>
+                        <input type="password" name="cvv" class="form-control" placeholder="CVV">
+                        <input type="submit" value="Submit" class="btn btn-secondary mt-3">
+                        <br>
+                        <span class="error"><?php echo $error; ?></span>
+                    </form>
+                </div>
             </div>
         </div>
         <hr>

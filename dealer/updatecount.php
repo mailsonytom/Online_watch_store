@@ -6,6 +6,8 @@ if (!isset($_SESSION['dealer'])) {
                     window.location = "login.php"
                      </script>';
 } else {
+    $data[] = [];
+    $error = "";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $product_id = $_POST['product_id'];
         $flag = 0;

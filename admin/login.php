@@ -87,11 +87,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
     <!-- Navbar -->
-    <div class="container pt-5" style="min-height: 95vh;">
-        <div class="row" >
-            <div class="col-md-12">
-                <h2 class="mt-5 col-md-4 mx-auto ">Sign-in as admin</h2>
-                <form action="" method="POST" class="col-md-8 mx-auto mt-5 px-2 py-2 border border-dark rounded">
+    <div class="container-fluid pt-5" >
+        <div class="row" style="height: 150vh;">
+            <div class="admin-banner col-md-6 p-0">
+            </div>
+            <div class="col-md-6">
+                <h2 class="mt-5 col-md-12 text-center">Sign-in as admin</h2>
+                <form action="" method="POST" class="col-md-12 mt-5 py-2 border border-dark rounded">
                     <span class="error"><?php echo $error; ?></span>
                     <div class="form-group">
                         <label>Username</label>
